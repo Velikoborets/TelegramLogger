@@ -1,0 +1,9 @@
+services:
+  nginx:
+    container_name: telegramLogger_nginx
+    image: nginx:latest
+    volumes:
+      - ./:/var/www/telegramLogger
+      - ./_docker/nginx/conf.d:/etc/nginx/conf.d
+    ports:
+      - "8876:80"
