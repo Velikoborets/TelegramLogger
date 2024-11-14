@@ -7,17 +7,14 @@ use Monolog\Logger;
 class TelegramLogger
 {
     /**
-     * Invokes the logger configuration
+     * Invokes the logger configuration for Telegram
      *
      * @return \Monolog\Logger
      */
     public function __invoke()
     {
-        $logger = new Logger('Logger');
-
-        $logger->pushHandler(new TelegramLoggerHandler())
-               ->pushHandler(new DatabaseLoggerHandler());
-
+        $logger = new Logger('telegramLogger');
+        $logger->pushHandler(new TelegramLoggerHandler());
         return $logger;
     }
 }

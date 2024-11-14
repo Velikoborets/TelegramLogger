@@ -18,15 +18,17 @@ class LoggingController extends Controller
     public function testException()
     {
         try {
-            $a = 2 / 0;
+            $a = 'str';
+            $b = 2;
+            $c = $a + $b;
         } catch(\Throwable $e) {
-            Log::error('Error guys! division by zero!');
+            Log::critical('critical error!!!');
             return view('error', ['error' => $e->getMessage()]);
         }
     }
 
     public function testUnHandleException()
     {
-        throw new \Exception('This is unhandled exception!');
+        throw new \Exception('This is unhandled exception!(critical error)');
     }
 }

@@ -126,7 +126,7 @@ return [
 
         'repository' => [
             'driver' => 'custom',
-            'via' => App\Logging\DatabaseLoggerHandler::class,
+            'via' => App\Logging\DatabaseLogger::class,
             'level' => env('LOG_LEVEL', 'critical'),
         ],
     ],

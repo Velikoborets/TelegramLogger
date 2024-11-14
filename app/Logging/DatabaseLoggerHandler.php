@@ -6,7 +6,7 @@ use Monolog\Handler\AbstractProcessingHandler;
 use Monolog\Logger;
 use App\Models\Log;
 
-class DatabaseLoggerHandler
+class DatabaseLoggerHandler extends AbstractProcessingHandler
 {
     /**
      * Writes the log record to the database
