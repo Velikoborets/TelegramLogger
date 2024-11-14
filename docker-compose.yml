@@ -7,3 +7,13 @@ services:
       - ./_docker/nginx/conf.d:/etc/nginx/conf.d
     ports:
       - "8876:80"
+    depends_on:
+      - app
+
+  app:
+    container_name: telegramLogger_app
+    build:
+        context: .
+        dockerfile: _docker/app/Dockerfile
+    volumes:
+        - ./:/var/www/telegramLogger
