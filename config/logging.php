@@ -53,7 +53,7 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['single'],
+            'channels' => ['telegram', 'repository'],
             'ignore_exceptions' => false,
         ],
 
@@ -116,6 +116,18 @@ return [
 
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
+        ],
+
+        'telegram' => [
+            'driver' => 'custom',
+            'via' => App\Logging\TelegramLogger::class,
+            'level' => env('LOG_LEVEL', 'critical'),
+        ],
+
+        'repository' => [
+            'driver' => 'custom',
+            'via' => App\Logging\DatabaseLoggerHandler::class,
+            'level' => env('LOG_LEVEL', 'critical'),
         ],
     ],
 
