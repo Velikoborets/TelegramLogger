@@ -20,4 +20,9 @@ class LoggingController extends Controller
             return view('error', ['error' => $e->getMessage()]);
         }
     }
+
+    public function testUnHandleException()
+    {
+        throw new \Exception('This is unhandled exception!');
+    }
 }

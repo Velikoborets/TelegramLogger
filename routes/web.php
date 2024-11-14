@@ -16,3 +16,4 @@ use App\Http\Controllers\LoggingController;
 
 Route::get('/',[LoggingController::class, 'generateException'])->name('exception');
 Route::post('/testException', [LoggingController::class, 'testException'])->name('testException');
+Route::post('/testUnhandledException', [LoggingController::class, 'testUnHandleException'])->name('testUnHandleException');
