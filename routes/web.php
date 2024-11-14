@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoggingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',[LoggingController::class, 'generateException'])->name('exception');
+Route::post('/testException', [LoggingController::class, 'testException'])->name('testException');

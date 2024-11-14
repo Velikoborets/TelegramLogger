@@ -10,4 +10,14 @@ class LoggingController extends Controller
     {
         return view('generateException');
     }
+
+    public function testException()
+    {
+        try {
+            $a = 2 / 0;
+        } catch(\Throwable $e) {
+            // Log::error('Error guys! division by zero!');
+            return view('error', ['error' => $e->getMessage()]);
+        }
+    }
 }
