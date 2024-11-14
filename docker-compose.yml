@@ -13,7 +13,23 @@ services:
   app:
     container_name: telegramLogger_app
     build:
-        context: .
-        dockerfile: _docker/app/Dockerfile
+      context: .
+      dockerfile: _docker/app/Dockerfile
     volumes:
-        - ./:/var/www/telegramLogger
+      - ./:/var/www/telegramLogger
+    depends_on:
+      - db
+
+  db:
+    container_name: telegramLogger_db
+    image: mysql:8.0
+    volumes:
+      - ./tmp/db:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "3306:3306"
+    command: ["--default-authentication-plugin=mysql_native_password", "--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
